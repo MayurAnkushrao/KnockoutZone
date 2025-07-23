@@ -3,7 +3,7 @@ import { login, logout } from "../../store/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { ROLES } from "../../utils/constants/roles";
 import { ADMIN_PATH } from "../../routes/admin/AdminPaths";
-import Button from "../../utils/ButtonComponent";
+import Button from "../../components/common/ButtonComponent";
 
 const LoginPage = () => {
   const dispath = useDispatch();

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../utils/ButtonComponent';
+import Button from '../components/common/ButtonComponent';
 import { Play, Download, Settings, Trash2 } from "lucide-react";
 
 const ButtonHelp = () => {
