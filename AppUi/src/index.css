@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+/* Force Tailwind to generate these classes */
+.bg-gradient-primary {
+}
+.bg-gradient-secondary {
+}
+.bg-gradient-danger {
+}
+.bg-gradient-success {
+}
+.text-primary-foreground {
+}
+.text-secondary-foreground {
+}
+.text-destructive-foreground {
+}
+.text-accent-foreground {
+}
+.shadow-glow-primary {
+}
+.shadow-glow-secondary {
+}
+.shadow-glow-danger {
+}
+.bg-game-disabled {
+}
+.border-game-success {
+}

@@ -1,17 +1,11 @@
-import { Navigate, useNavigate } from "react-router-dom";
-import { GUEST_PATH } from "../routes/guest/GuestPaths";
+import React from "react";
+import TemPage from "./tem";
 
-const LandingPage = () => {
-    const navigate = useNavigate();
-    const btnHandle = () => {
-        navigate(GUEST_PATH.LOGIN);
-    }
-    return <>
-        <div>
-            Landing page
-        </div>
-            <button onClick={btnHandle}>login</button>
-    </>
+export default function Landing() {
+  return <div>
+    <div className="bg-gradient-primary text-primary-foreground p-4">
+  Test: This should have a blue gradient background and white text.
+</div>
+    <TemPage />
+    </div>;
 }
-
-export default LandingPage;
