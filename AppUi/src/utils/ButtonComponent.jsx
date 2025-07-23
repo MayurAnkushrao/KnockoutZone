@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority"
 import { Loader2 } from "lucide-react"
 import PropTypes from "prop-types"
 
-import { cn } from "../../lib/utils"
+import { cn } from "../lib/utils"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-bold tracking-wide uppercase ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden",
@@ -47,20 +47,38 @@ const Button = React.forwardRef(
     const Comp = asChild ? Slot : "button"
     const isDisabled = disabled || isLoading || variant === "disabled"
     
+    // Only pass disabled prop to button elements, not to other elements when using asChild
+    const componentProps = {
+      className: cn(
+        buttonVariants({ 
+          variant: isDisabled ? "disabled" : variant, 
+          size, 
+          className 
+        }),
+        isLoading && "animate-pulse-glow"
+      ),
+      ref,
+      ...props
+    }
+    
+    // Only add disabled prop for button elements
+    if (!asChild) {
+      componentProps.disabled = isDisabled
+    }
+    
+    if (asChild) {
+      // For asChild, we need to clone the child and merge props
+      return (
+        <Slot {...componentProps}>
+          {React.cloneElement(children, {
+            className: cn(children.props.className, componentProps.className)
+          })}
+        </Slot>
+      )
+    }
+    
     return (
-      <Comp
-        className={cn(
-          buttonVariants({ 
-            variant: isDisabled ? "disabled" : variant, 
-            size, 
-            className 
-          }),
-          isLoading && "animate-pulse-glow"
-        )}
-        ref={ref}
-        disabled={isDisabled}
-        {...props}
-      >
+      <Comp {...componentProps}>
         {isLoading && (
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         )}
@@ -94,4 +112,4 @@ Button.propTypes = {
   children: PropTypes.node,
 }
 
-export { Button, buttonVariants }
+export default Button
