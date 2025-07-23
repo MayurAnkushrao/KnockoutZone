@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import ButtonHelp from "../../help/ButtonHelp";
+import ButtonHelp from "../../pages/help/ButtonHelp";
 
 const DevRoutes = () => {
   return (
