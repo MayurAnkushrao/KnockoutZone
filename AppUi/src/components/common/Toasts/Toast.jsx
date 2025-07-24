@@ -40,10 +40,16 @@ const Toast = ({
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: -50, scale: 0.9 }}
+        initial={{ opacity: 0, y: -60, scale: 0.8 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: -50, scale: 0.9 }}
-        transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 25 }}
+        exit={{
+          opacity: 0,
+          y: 0,
+          scale: [1, 1.18, 0.7, 1.22, 0.5],
+          rotate: [0, 10, -10, 0, 0],
+          transition: { duration: 0.45, ease: [0.4, 0.7, 0.2, 1] }
+        }}
+        transition={{ duration: 0.32, type: "spring", stiffness: 320, damping: 22 }}
         className={`flex items-center px-4 py-3 rounded-lg mb-2 min-w-[220px] max-w-xs ${typeStyles[type]} ${glowStyles[type]} transition-all duration-300 dark:bg-opacity-90 dark:backdrop-blur`}
         role="alert"
         aria-live="assertive"
