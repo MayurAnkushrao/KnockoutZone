@@ -8,7 +8,7 @@ export default function Landing() {
   const btnHandle = () => {
     dispatch(showToast({ 
         message: "Login Successful!", 
-        type: "" }));
+        type: "success" }));
   };
   return (
     <div>
