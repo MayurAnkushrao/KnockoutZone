@@ -44,6 +44,13 @@ const ToastDemo = () => {
       >
         Custom Duration (7s)
       </Button>
+      <Button
+        variant="ghost"
+        className="w-full"
+        onClick={() => dispatch(showToast({ message: "Non-dismissible Toast!", type: "info", dismissible: false }))}
+      >
+        Non-dismissible
+      </Button>
     </div>
   );
 };
