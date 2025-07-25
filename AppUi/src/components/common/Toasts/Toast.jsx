@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, AlertCircle, AlertTriangle, Info } from "lucide-react";
+import Button from "../Buttons/ButtonComponent";
 
 const typeStyles = {
   success: "bg-gradient-success border border-game-success/20 text-primary-foreground",
@@ -50,20 +51,22 @@ const Toast = ({
           transition: { duration: 0.45, ease: [0.4, 0.7, 0.2, 1] }
         }}
         transition={{ duration: 0.32, type: "spring", stiffness: 320, damping: 22 }}
-        className={`flex items-center px-4 py-3 rounded-lg mb-2 min-w-[220px] max-w-xs ${typeStyles[type]} ${glowStyles[type]} transition-all duration-300 dark:bg-opacity-90 dark:backdrop-blur`}
+        className={`flex items-center px-3 py-2 rounded-lg mb-2 min-w-[160px] max-w-[320px] ${typeStyles[type]} ${glowStyles[type]} transition-all duration-300 dark:bg-opacity-90 dark:backdrop-blur`}
         role="alert"
         aria-live="assertive"
       >
         <span className="mr-2">{icons[type]}</span>
         <span className="flex-1 text-sm font-bold tracking-wide">{message}</span>
         {dismissible && (
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={onClose}
-            className="ml-2 p-1 rounded-full hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-all duration-300"
             aria-label="Close"
+            className="ml-2 p-1 rounded-full"
           >
             <X className="h-4 w-4" />
-          </button>
+          </Button>
         )}
       </motion.div>
     </AnimatePresence>
