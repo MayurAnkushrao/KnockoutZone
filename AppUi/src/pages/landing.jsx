@@ -1,17 +1,21 @@
-import { Navigate, useNavigate } from "react-router-dom";
-import { GUEST_PATH } from "../routes/guest/GuestPaths";
+import React from "react";
+import Button from "../components/common/Buttons/ButtonComponent";
+import { useDispatch } from "react-redux";
+import { showToast } from "../store/slices/toastSlice";
 
-const LandingPage = () => {
-    const navigate = useNavigate();
-    const btnHandle = () => {
-        navigate(GUEST_PATH.LOGIN);
-    }
-    return <>
-        <div>
-            Landing page
-        </div>
-            <button onClick={btnHandle}>login</button>
-    </>
+export default function Landing() {
+  const dispatch = useDispatch();
+  const btnHandle = () => {
+    dispatch(showToast({ 
+        message: "Login Successful!", 
+        type: "success" }));
+  };
+  return (
+    <div>
+      Landing Page. <br/>
+      <Button variant="secondary" onClick={btnHandle}>
+        Login
+      </Button>
+    </div>
+  );
 }
-
-export default LandingPage;
